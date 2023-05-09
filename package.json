@@ -1,0 +1,28 @@
+{
+  "name": "@slamach/vulture",
+  "description": "Simple self-hosted analytics and automation tool",
+  "version": "0.1.0",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": "^18.16",
+    "npm": "^9.6"
+  },
+  "workspaces": [
+    "apps/*",
+    "core"
+  ],
+  "scripts": {
+    "start": "echo \"Error: no start specified\" && exit 1",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,css,scss}": "prettier --write"
+  },
+  "devDependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
+    "prettier": "2.8.8",
+    "typescript": "^5.0.4"
+  }
+}

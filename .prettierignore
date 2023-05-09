@@ -1,0 +1,14 @@
+# npm
+.npm/
+node_modules/
+
+# IDE
+.idea/
+.vscode/
+
+# Projects
+/apps/ui/build/
+*.html
+
+# Misc
+.DS_Store

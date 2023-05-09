@@ -1,0 +1,8 @@
+{
+  "name": "@vulture/api",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "echo \"Error: no start specified\" && exit 1"
+  }
+}
