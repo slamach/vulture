@@ -1,3 +1,10 @@
 {
-  "extends": "../../tsconfig.json"
+  "extends": "../../tsconfig.json",
+  "references": [{ "path": "../../core" }],
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "module": "CommonJS",
+    "outDir": "dist"
+  }
 }

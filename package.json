@@ -13,13 +13,20 @@
     "core"
   ],
   "scripts": {
-    "start": "echo \"Error: no start specified\" && exit 1",
+    "start:api": "npm start --workspace=@vulture/api",
+    "start:ui": "npm start --workspace=@vulture/ui",
+    "start": "concurrently -k -p \"[{name}]\" -n \"API,UI\" -c \"red.bold,green.bold\" \"npm run start:api\" \"npm run start:ui\"",
+    "build:api": "npm run build --workspace=@vulture/api",
+    "build:ui": "npm run build --workspace=@vulture/ui",
+    "build": "concurrently -p \"[{name}]\" -n \"API,UI\" -c \"red.bold,green.bold\" \"npm run build:api\" \"npm run build:ui\"",
     "prepare": "husky install"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,css,scss}": "prettier --write"
   },
   "devDependencies": {
+    "@types/node": "^20.1.1",
+    "concurrently": "^8.0.1",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
     "prettier": "2.8.8",

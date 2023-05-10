@@ -3,6 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "echo \"Error: no start specified\" && exit 1"
+    "start": "concurrently -k -p \"[{name}]\" -n \"TypeScript,App\" -c \"blue,yellow\" \"tsc -w\" \"nodemon\"",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "fastify": "^4.17.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
   }
 }
