@@ -3,13 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "concurrently -k -p \"[{name}]\" -n \"TypeScript,App\" -c \"blue,yellow\" \"tsc -w\" \"nodemon\"",
-    "build": "tsc"
+    "build": "tsc",
+    "watch": "tsc -w --preserveWatchOutput",
+    "nodemon": "cross-env NODE_ENV=development nodemon -q",
+    "start:dev": "cross-env NODE_ENV=development node --inspect dist/index.js",
+    "start:prod": "cross-env NODE_ENV=production node dist/index.js",
+    "start": "concurrently -k -p \"[{name}]\" -n \"TSC,APP\" -c \"blue,yellow\" \"npm:watch\" \"npm:nodemon\""
   },
   "dependencies": {
-    "fastify": "^4.17.0"
+    "fastify": "^4.17.0",
+    "fastify-plugin": "^4.5.0",
+    "mongoose": "^7.1.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "env-schema": "^5.2.0",
+    "nodemon": "^2.0.22",
+    "pino-pretty": "^10.0.0"
   }
 }

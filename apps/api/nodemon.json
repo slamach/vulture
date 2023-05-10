@@ -1,5 +1,5 @@
 {
   "ignore": [".git", "node_modules"],
   "watch": ["dist/**/*"],
-  "exec": "node dist/index.js | npx pino-pretty --colorize"
+  "exec": "npm run start:dev"
 }
