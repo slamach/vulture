@@ -1,7 +1,11 @@
 import Fastify from 'fastify';
+import helmet from '@fastify/helmet';
 import { routes } from './routes';
-import { mongodb } from './utils/mongodb';
+import { mongooseConnector } from './plugins/mongoose';
 import { config, isDevelopment } from './config';
+import { fastifySwagger } from '@fastify/swagger';
+import { fastifySwaggerUi } from '@fastify/swagger-ui';
+import { swaggerConfig } from './config/swagger';
 
 const fastify = Fastify({
   logger: isDevelopment
@@ -14,10 +18,14 @@ const fastify = Fastify({
         },
       }
     : false,
+  ignoreTrailingSlash: true,
 });
 
-fastify.register(mongodb);
-fastify.register(routes);
+fastify.register(helmet);
+fastify.register(fastifySwagger, swaggerConfig);
+fastify.register(fastifySwaggerUi, { routePrefix: '/docs' });
+fastify.register(mongooseConnector);
+fastify.register(routes, { prefix: '/api/v1' });
 
 const start = async () => {
   try {

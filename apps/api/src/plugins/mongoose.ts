@@ -1,8 +1,15 @@
-import { FastifyPluginAsync } from 'fastify';
 import mongoose from 'mongoose';
+import fp from 'fastify-plugin';
 import { config } from '../config';
+import { models } from '../models';
 
-export const mongodb: FastifyPluginAsync = async (fastify) => {
+declare module 'fastify' {
+  interface FastifyInstance {
+    mongoose: typeof models;
+  }
+}
+
+export const mongooseConnector = fp(async (fastify) => {
   try {
     mongoose.connection.on('connected', () => {
       fastify.log.info('Connected to MongoDB');
@@ -22,10 +29,10 @@ export const mongodb: FastifyPluginAsync = async (fastify) => {
         pass: config.MONGODB_PASSWORD,
       }
     );
+
+    fastify.decorate('mongoose', models);
   } catch (error) {
     fastify.log.error(error, 'Error while connecting to MongoDB');
     process.exit(1);
   }
-};
-
-module.exports = { mongodb };
+});

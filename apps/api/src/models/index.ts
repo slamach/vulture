@@ -1,7 +1,5 @@
-import mongoose from 'mongoose';
+import { Metric } from './metric';
 
-const kittySchema = new mongoose.Schema({
-  name: String,
-});
-
-export const Kitten = mongoose.model('Kitten', kittySchema);
+export const models = {
+  Metric,
+};
