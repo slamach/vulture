@@ -1,6 +1,6 @@
 import { envSchema, JSONSchemaType } from 'env-schema';
 
-interface EnvType {
+interface IEnvConfig {
   HOST: string;
   PORT: number;
   MONGODB_HOST: string;
@@ -11,7 +11,7 @@ interface EnvType {
   MONGODB_AUTHSOURCE?: string;
 }
 
-const schema: JSONSchemaType<EnvType> = {
+const schema: JSONSchemaType<IEnvConfig> = {
   type: 'object',
   required: ['HOST', 'PORT', 'MONGODB_HOST', 'MONGODB_PORT'],
   properties: {
@@ -50,7 +50,7 @@ const schema: JSONSchemaType<EnvType> = {
   },
 };
 
-let envConfig: EnvType;
+let envConfig: IEnvConfig;
 
 try {
   envConfig = envSchema({

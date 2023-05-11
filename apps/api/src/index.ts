@@ -1,7 +1,7 @@
 import Fastify from 'fastify';
 import helmet from '@fastify/helmet';
 import { routes } from './routes';
-import { mongooseConnector } from './plugins/mongoose';
+import { mongooseConnector } from './plugins/mongooseConnector';
 import { config, isDevelopment } from './config';
 import { fastifySwagger } from '@fastify/swagger';
 import { fastifySwaggerUi } from '@fastify/swagger-ui';

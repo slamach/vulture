@@ -1,22 +1,11 @@
+import { IMetric } from '@vulture/core/types/models';
 import { FastifySchema } from 'fastify';
 
-const requestMetricProperties = {
-  name: { type: 'string' },
-  description: { type: 'string' },
-  schema: { type: 'object', additionalProperties: { type: 'string' } },
-};
+export interface IParamsSchema {
+  metricId: string;
+}
 
-const replyMetricProperties = {
-  _id: { type: 'string' },
-  ...requestMetricProperties,
-};
-
-const metricsParams = {
-  type: 'object',
-  properties: {
-    metricId: { type: 'string' },
-  },
-};
+export type ICreateMetricBodySchema = IMetric;
 
 export const getMetricsSchema: FastifySchema = {
   summary: 'Get all metrics',
@@ -26,7 +15,15 @@ export const getMetricsSchema: FastifySchema = {
       type: 'array',
       items: {
         type: 'object',
-        properties: replyMetricProperties,
+        properties: {
+          _id: { type: 'string' },
+          name: { type: 'string' },
+          description: { type: 'string' },
+          schema: {
+            type: 'object',
+            additionalProperties: { type: 'string' },
+          },
+        },
       },
     },
   },
@@ -35,16 +32,30 @@ export const getMetricsSchema: FastifySchema = {
 export const createMetricSchema: FastifySchema = {
   summary: 'Create metric',
   tags: ['metrics'],
-  params: metricsParams,
+  params: {
+    type: 'object',
+    properties: {
+      metricId: { type: 'string' },
+    },
+  },
   body: {
     type: 'object',
     required: ['name', 'schema'],
-    properties: requestMetricProperties,
+    properties: {
+      name: { type: 'string' },
+      description: { type: 'string' },
+      schema: { type: 'object', additionalProperties: { type: 'string' } },
+    },
   },
   response: {
     200: {
       type: 'object',
-      properties: replyMetricProperties,
+      properties: {
+        _id: { type: 'string' },
+        name: { type: 'string' },
+        description: { type: 'string' },
+        schema: { type: 'object', additionalProperties: { type: 'string' } },
+      },
     },
   },
 };
@@ -52,11 +63,21 @@ export const createMetricSchema: FastifySchema = {
 export const getSingleMetricSchema: FastifySchema = {
   summary: 'Get single metrics',
   tags: ['metrics'],
-  params: metricsParams,
+  params: {
+    type: 'object',
+    properties: {
+      metricId: { type: 'string' },
+    },
+  },
   response: {
     200: {
       type: 'object',
-      properties: replyMetricProperties,
+      properties: {
+        _id: { type: 'string' },
+        name: { type: 'string' },
+        description: { type: 'string' },
+        schema: { type: 'object', additionalProperties: { type: 'string' } },
+      },
     },
   },
 };
@@ -64,15 +85,29 @@ export const getSingleMetricSchema: FastifySchema = {
 export const updateMetricSchema: FastifySchema = {
   summary: 'Update metric',
   tags: ['metrics'],
-  params: metricsParams,
+  params: {
+    type: 'object',
+    properties: {
+      metricId: { type: 'string' },
+    },
+  },
   body: {
     type: 'object',
-    properties: requestMetricProperties,
+    properties: {
+      name: { type: 'string' },
+      description: { type: 'string' },
+      schema: { type: 'object', additionalProperties: { type: 'string' } },
+    },
   },
   response: {
     200: {
       type: 'object',
-      properties: replyMetricProperties,
+      properties: {
+        _id: { type: 'string' },
+        name: { type: 'string' },
+        description: { type: 'string' },
+        schema: { type: 'object', additionalProperties: { type: 'string' } },
+      },
     },
   },
 };
@@ -80,11 +115,21 @@ export const updateMetricSchema: FastifySchema = {
 export const deleteMetricSchema: FastifySchema = {
   summary: 'Delete metric',
   tags: ['metrics'],
-  params: metricsParams,
+  params: {
+    type: 'object',
+    properties: {
+      metricId: { type: 'string' },
+    },
+  },
   response: {
     200: {
       type: 'object',
-      properties: replyMetricProperties,
+      properties: {
+        _id: { type: 'string' },
+        name: { type: 'string' },
+        description: { type: 'string' },
+        schema: { type: 'object', additionalProperties: { type: 'string' } },
+      },
     },
   },
 };

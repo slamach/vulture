@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "tsc",
-    "watch": "tsc -w --preserveWatchOutput",
+    "build": "tsc -b",
+    "watch": "tsc -b -w",
     "nodemon": "cross-env NODE_ENV=development nodemon -q",
     "start:dev": "cross-env NODE_ENV=development node --inspect dist/index.js",
     "start:prod": "cross-env NODE_ENV=production node dist/index.js",
