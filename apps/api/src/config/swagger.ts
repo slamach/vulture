@@ -14,6 +14,9 @@ export const swaggerConfig: SwaggerOptions = {
         email: 'sviridov.dvv@gmail.com',
       },
     },
-    tags: [{ name: 'metrics', description: 'Metrics related end-points' }],
+    tags: [
+      { name: 'metrics', description: 'Metrics related end-points' },
+      { name: 'data', description: 'Metric data records related end-points' },
+    ],
   },
 };

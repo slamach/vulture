@@ -40,7 +40,9 @@ export const updateAutomationBodySchema = {
         properties: {
           property: { type: 'string' },
           type: { type: 'string', enum: Object.values(ConditionType) },
-          value: { type: Object.values(MetricSchemaType) },
+          value: {
+            anyOf: Object.values(MetricSchemaType).map((type) => ({ type })),
+          },
         },
       },
     },
