@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "tsc -b",
+    "build": "tsc --build",
     "watch": "tsc -b -w",
     "nodemon": "cross-env NODE_ENV=development nodemon -q",
     "start:dev": "cross-env NODE_ENV=development node --inspect dist/index.js",

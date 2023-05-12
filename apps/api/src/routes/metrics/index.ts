@@ -1,20 +1,23 @@
 import { FastifyPluginAsync } from 'fastify';
 import {
-  getSingleMetric,
   getMetrics,
   createMetric,
+  getSingleMetric,
   updateMetric,
   deleteMetric,
 } from './handlers';
 import {
-  createMetricSchema,
-  deleteMetricSchema,
   getMetricsSchema,
+  createMetricSchema,
   getSingleMetricSchema,
   updateMetricSchema,
+  deleteMetricSchema,
 } from './schemas';
+import { automationsRoutes } from './automations';
 
 export const metricsRoutes: FastifyPluginAsync = async (fastify) => {
+  fastify.register(automationsRoutes, { prefix: '/:metricId/automations' });
+
   fastify.route({
     method: 'GET',
     url: '/',

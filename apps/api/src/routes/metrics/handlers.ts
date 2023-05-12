@@ -1,59 +1,52 @@
-import { IMetric } from '@vulture/core/types/models';
 import { RouteHandler } from 'fastify';
-import mongoose from 'mongoose';
-import { ICreateMetricBodySchema, IParamsSchema } from './schemas';
+import {
+  ICreateMetricBodySchema,
+  IMetricParamsSchema,
+  IUpdateMetricBodySchema,
+} from './schemas';
 
-// TODO: Take out metricId validation
+// TODO: Add error handling
 
 export const getMetrics: RouteHandler = async (request) => {
-  return await request.server.mongoose.Metric.find();
+  const { Metric } = request.server.mongoose;
+
+  return await Metric.find();
 };
 
 export const createMetric: RouteHandler<{
   Body: ICreateMetricBodySchema;
 }> = async (request) => {
-  const metric = new request.server.mongoose.Metric(request.body);
+  const { Metric } = request.server.mongoose;
+
+  const metric = new Metric(request.body);
+
   return await metric.save();
 };
 
-export const getSingleMetric: RouteHandler<{ Params: IParamsSchema }> = async (
-  request,
-  reply
-) => {
+export const getSingleMetric: RouteHandler<{
+  Params: IMetricParamsSchema;
+}> = async (request) => {
+  const { Metric } = request.server.mongoose;
   const { metricId } = request.params;
-  if (!mongoose.Types.ObjectId.isValid(metricId)) {
-    reply.status(400);
-    return { message: 'Invalid id' };
-  }
 
-  return await request.server.mongoose.Metric.findById(metricId);
+  return await Metric.findById(metricId);
 };
 
-export const updateMetric: RouteHandler<{ Params: IParamsSchema }> = async (
-  request,
-  reply
-) => {
+export const updateMetric: RouteHandler<{
+  Params: IMetricParamsSchema;
+  Body: IUpdateMetricBodySchema;
+}> = async (request) => {
+  const { Metric } = request.server.mongoose;
   const { metricId } = request.params;
-  if (!mongoose.Types.ObjectId.isValid(metricId)) {
-    reply.status(400);
-    return { message: 'Invalid id' };
-  }
 
-  return await request.server.mongoose.Metric.updateOne(
-    { _id: metricId },
-    request.body as IMetric
-  );
+  return await Metric.findByIdAndUpdate(metricId, request.body, { new: true });
 };
 
-export const deleteMetric: RouteHandler<{ Params: IParamsSchema }> = async (
-  request,
-  reply
-) => {
+export const deleteMetric: RouteHandler<{
+  Params: IMetricParamsSchema;
+}> = async (request) => {
+  const { Metric } = request.server.mongoose;
   const { metricId } = request.params;
-  if (!mongoose.Types.ObjectId.isValid(metricId)) {
-    reply.status(400);
-    return { message: 'Invalid id' };
-  }
 
-  return await request.server.mongoose.Metric.deleteOne({ _id: metricId });
+  return await Metric.findByIdAndDelete(metricId);
 };
