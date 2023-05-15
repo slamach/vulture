@@ -1,5 +1,6 @@
 import Fastify from 'fastify';
 import helmet from '@fastify/helmet';
+import cors from '@fastify/cors';
 import { routes } from './routes';
 import { mongooseConnector } from './plugins/mongooseConnector';
 import { config, isDevelopment } from './config';
@@ -22,6 +23,7 @@ const fastify = Fastify({
 });
 
 fastify.register(helmet);
+fastify.register(cors);
 fastify.register(fastifySwagger, swaggerConfig);
 fastify.register(fastifySwaggerUi, { routePrefix: '/docs' });
 fastify.register(mongooseConnector);

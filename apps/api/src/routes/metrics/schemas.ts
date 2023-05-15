@@ -9,8 +9,8 @@ export interface IMetricParamsSchema {
   metricId: string;
 }
 
-export type ICreateMetricBodySchema = IMetric;
-export type IUpdateMetricBodySchema = Partial<IMetric>;
+export type ICreateMetricBodySchema = Omit<IMetric, '_id'>;
+export type IUpdateMetricBodySchema = Partial<Omit<IMetric, '_id'>>;
 
 const metricParamsSchema = {
   type: 'object',

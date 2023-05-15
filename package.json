@@ -26,6 +26,8 @@
   },
   "devDependencies": {
     "@types/node": "^20.1.1",
+    "@vulture/ui": "^0.1.0",
+    "browserslist-to-esbuild": "^1.2.0",
     "concurrently": "^8.0.1",
     "cross-env": "^7.0.3",
     "husky": "^8.0.3",

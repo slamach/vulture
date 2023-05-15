@@ -15,8 +15,8 @@ export interface ISpecificAutomationParamsSchema
   automationId: string;
 }
 
-export type ICreateAutomationBodySchema = IAutomation;
-export type IUpdateAutomationBodySchema = Partial<IAutomation>;
+export type ICreateAutomationBodySchema = Omit<IAutomation, '_id'>;
+export type IUpdateAutomationBodySchema = Partial<Omit<IAutomation, '_id'>>;
 
 export const automationParamsSchema = {
   type: 'object',

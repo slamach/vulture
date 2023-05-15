@@ -5,7 +5,7 @@ export interface IGetDataQuerystringSchema {
   metricId?: string;
 }
 
-export type ICreateDataBodySchema = Omit<IData, 'timestamp'>;
+export type ICreateDataBodySchema = Omit<IData, 'timestamp' | '_id'>;
 
 const createDataBodySchema = {
   type: 'object',

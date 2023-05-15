@@ -47,6 +47,7 @@ export interface IAction {
 }
 
 export interface IAutomation {
+  _id: string;
   name: string;
   description?: string;
   conditions: ICondition[];
@@ -54,6 +55,7 @@ export interface IAutomation {
 }
 
 export interface IMetric {
+  _id: string;
   name: string;
   description?: string;
   schema: Record<string, MetricSchemaType>;

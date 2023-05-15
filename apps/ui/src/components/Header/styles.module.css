@@ -1,0 +1,13 @@
+.container {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  color: inherit;
+  font-size: 32px;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-decoration: none;
+}
