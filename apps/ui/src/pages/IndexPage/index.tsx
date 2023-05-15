@@ -8,7 +8,7 @@ export const IndexPage = () => {
 
   return (
     <>
-      <h1 className="visuallyHidden">Metrics</h1>
+      <h1 className="visuallyHidden">Home Page</h1>
       <section>
         <h2 className={styles.title}>Metrics</h2>
         {!isGetMetricsLoading && getMetricsData && (

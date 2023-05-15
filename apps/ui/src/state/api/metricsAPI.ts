@@ -10,6 +10,13 @@ const metricsAPI = api.injectEndpoints({
       }),
       providesTags: ['Metrics'],
     }),
+    getSingleMetric: builder.query<IMetric, string>({
+      query: (metricId) => ({
+        url: `metrics/${metricId}`,
+        method: 'GET',
+      }),
+      providesTags: ['Metrics'],
+    }),
     deleteMetric: builder.mutation<IMetric, string>({
       query: (metriId) => ({
         url: `metrics/${metriId}`,
@@ -20,6 +27,10 @@ const metricsAPI = api.injectEndpoints({
   }),
 });
 
-export const { useGetMetricsQuery, useDeleteMetricMutation } = metricsAPI;
+export const {
+  useGetMetricsQuery,
+  useGetSingleMetricQuery,
+  useDeleteMetricMutation,
+} = metricsAPI;
 
 export default metricsAPI;
