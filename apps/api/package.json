@@ -11,6 +11,7 @@
     "start": "concurrently -k -p \"[{name}]\" -n \"TSC,APP\" -c \"blue,yellow\" \"npm:watch\" \"npm:nodemon\""
   },
   "dependencies": {
+    "@fast-csv/format": "^4.3.5",
     "@fastify/cors": "^8.2.1",
     "@fastify/helmet": "^10.1.1",
     "@fastify/swagger": "^8.3.1",

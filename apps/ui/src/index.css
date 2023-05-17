@@ -28,26 +28,21 @@
   box-sizing: border-box;
 }
 
-html {
-  height: 100%;
-  overflow-x: hidden;
-}
-
 body {
   max-width: 1200px;
   min-width: 375px;
-  height: 100%;
   margin: 0 auto;
-  overflow-x: hidden;
+  padding-bottom: 20px;
   scroll-behavior: smooth;
   font-family: Inter, sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   color: #000000;
   background-color: #ffffff;
 }
 
+html,
+body,
 #root {
-  height: 100%;
   overflow-x: hidden;
 }
 

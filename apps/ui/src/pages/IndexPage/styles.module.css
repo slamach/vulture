@@ -1,6 +1,21 @@
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .title {
   margin: 0;
   margin-bottom: 10px;
   font-size: 24px;
   font-weight: 500;
+}
+
+.controlList {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }

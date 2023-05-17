@@ -55,3 +55,14 @@ export const createDataSchema: FastifySchema = {
     200: dataResponseSchema,
   },
 };
+
+export const getDataCsvSchema: FastifySchema = {
+  summary: 'Get specified metric records as CSV document',
+  tags: ['data'],
+  querystring: {
+    type: 'object',
+    properties: {
+      metricId: { type: 'string' },
+    },
+  },
+};

@@ -2,10 +2,7 @@
   "extends": "../tsconfig.json",
   "include": ["./src/**/*.ts", "./src/**/*.tsx"],
   "compilerOptions": {
-    "module": "CommonJS",
-    "moduleResolution": "node",
     "composite": true,
-    "rootDir": "src",
-    "outDir": "dist"
+    "rootDir": "src"
   }
 }

@@ -8,11 +8,12 @@ export interface ItemProps {
   className?: string;
   name: string;
   to?: string;
+  extra?: string;
   onDelete: (...args: any) => any;
 }
 
 export const Item = (props: ItemProps) => {
-  const { className, name, to, onDelete } = props;
+  const { className, name, to, extra, onDelete } = props;
 
   return (
     <li
@@ -28,16 +29,19 @@ export const Item = (props: ItemProps) => {
         <h3 className={styles.title}>{name}</h3>
       )}
 
-      <ul className={styles.actionList}>
-        <li className={styles.actionItem}>
-          <ActionButton
-            className={styles.actionButton}
-            action={onDelete}
-            text="Delete"
-            icon={TrashIcon}
-          />
-        </li>
-      </ul>
+      <div className={styles.info}>
+        {Boolean(extra) && <p className={styles.extra}>{extra}</p>}
+        <ul className={styles.actionList}>
+          <li className={styles.actionItem}>
+            <ActionButton
+              className={styles.actionButton}
+              action={onDelete}
+              text="Delete"
+              icon={TrashIcon}
+            />
+          </li>
+        </ul>
+      </div>
     </li>
   );
 };

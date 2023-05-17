@@ -40,11 +40,22 @@
   font-weight: 500;
 }
 
+.info {
+  display: flex;
+  align-items: center;
+}
+
+.extra {
+  font-size: 12px;
+  color: #646464;
+}
+
 .actionList {
   display: flex;
   align-items: center;
   gap: 5px;
   margin: 0;
+  margin-left: 10px;
   padding: 0;
   list-style: none;
 }

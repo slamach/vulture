@@ -2,7 +2,7 @@ import { Item } from '../Item';
 import styles from './styles.module.css';
 
 export interface ListProps {
-  items: { _id: string; name: string }[];
+  items: { _id: string; name: string; extra?: string }[];
   onDelete: (id: string) => void;
   toFormer?: (id: string) => string;
 }
@@ -18,6 +18,7 @@ export const List = (props: ListProps) => {
           name={item.name}
           onDelete={() => onDelete(item._id)}
           to={toFormer && toFormer(item._id)}
+          extra={item.extra}
         />
       ))}
     </ul>

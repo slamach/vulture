@@ -1,6 +1,6 @@
 import { FastifyPluginAsync } from 'fastify';
-import { getData, createData } from './handlers';
-import { getDataSchema, createDataSchema } from './schemas';
+import { getData, createData, getDataCsv } from './handlers';
+import { getDataSchema, createDataSchema, getDataCsvSchema } from './schemas';
 
 export const dataRoutes: FastifyPluginAsync = async (fastify) => {
   fastify.route({
@@ -15,5 +15,12 @@ export const dataRoutes: FastifyPluginAsync = async (fastify) => {
     url: '/',
     handler: createData,
     schema: createDataSchema,
+  });
+
+  fastify.route({
+    method: 'GET',
+    url: '/csv',
+    handler: getDataCsv,
+    schema: getDataCsvSchema,
   });
 };

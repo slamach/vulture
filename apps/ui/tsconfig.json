@@ -1,6 +1,6 @@
 {
   "extends": "../../tsconfig.json",
-  "references": [{ "path": "../../core" }],
+  "references": [{ "path": "../../core/tsconfig.esm.json" }],
   "include": ["./src/**/*.ts", "./src/**/*.tsx", "./vite.config.ts"],
   "compilerOptions": {
     "module": "esnext",
