@@ -4,6 +4,7 @@ import { useGetMetricsQuery } from '../../state/api/metricsAPI';
 import { ReactComponent as PlusIcon } from '../../assets/img/icons/plus.svg';
 import styles from './styles.module.css';
 import { useState } from 'react';
+import { MetricCreationModal } from '../../components/MetricCreationModal';
 
 export const IndexPage = () => {
   const { data: getMetricsData, isLoading: isGetMetricsLoading } =
@@ -29,6 +30,9 @@ export const IndexPage = () => {
         </div>
         {!isGetMetricsLoading && getMetricsData && (
           <MetricList metrics={getMetricsData} />
+        )}
+        {isCreationModalOpen && (
+          <MetricCreationModal onClose={() => setCreationModalOpen(false)} />
         )}
       </section>
     </>
