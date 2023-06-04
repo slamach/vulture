@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.input {
+  padding: 5px;
+  font-family: inherit;
+  font-size: 12px;
+  border: 1px solid #d8d8d8;
+  border-radius: 10px;
+}

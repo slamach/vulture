@@ -14,7 +14,6 @@ export const MetricList = (props: MetricListProps) => {
   const handleDelete = useCallback(async (metricId: string) => {
     try {
       await deleteMetric(metricId);
-      alert('Success');
     } catch (e) {
       alert(e);
     }
