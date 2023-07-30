@@ -1,1 +1,0 @@
-# Vulture API (WIP)

@@ -1,0 +1,52 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sectionTitle {
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.sectionInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.propertyList {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.propertyItem {
+  display: flex;
+  align-items: center;
+}
+
+.propertyNameInput,
+.propertyTypeSelect {
+  margin-right: 5px;
+}
+
+.submitButton {
+  position: relative;
+  display: block;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #d8d8d8;
+  background-color: #ffffff;
+  border-radius: 10px;
+
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    border-color: #4a4a4a;
+  }
+}

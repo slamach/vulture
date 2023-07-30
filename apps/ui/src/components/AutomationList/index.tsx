@@ -2,15 +2,7 @@ import { ConditionType, IAutomation } from '@vulture/core';
 import { useCallback } from 'react';
 import { useDeleteAutomationMutation } from '../../state/api/automationsAPI';
 import { List } from '../List';
-
-const CONDITION_TYPE_SIGN: Record<ConditionType, string> = {
-  [ConditionType.EQUALS]: '==',
-  [ConditionType.NOT_EQUALS]: '!=',
-  [ConditionType.GREATER]: '>',
-  [ConditionType.GREATER_OR_EQUALS]: '>=',
-  [ConditionType.LESS]: '<',
-  [ConditionType.LESS_OR_EQUALS]: '<=',
-};
+import { CONDITION_TYPE_SIGN } from '../../utils';
 
 export interface AutomationListProps {
   metricId: string;
@@ -31,7 +23,6 @@ export const AutomationList = (props: AutomationListProps) => {
   const handleDelete = useCallback(async (automationId: string) => {
     try {
       await deleteAutomation({ metricId, automationId });
-      alert('Success');
     } catch (e) {
       alert(e);
     }

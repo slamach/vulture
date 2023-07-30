@@ -24,8 +24,10 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
           {label}
         </span>
         <select {...selectProps} ref={ref} className={styles.select}>
-          {options.map((option) => (
-            <option value={option.value}>{option.name ?? option.value}</option>
+          {options.map((option, index) => (
+            <option key={index} value={option.value}>
+              {option.name ?? option.value}
+            </option>
           ))}
         </select>
       </label>

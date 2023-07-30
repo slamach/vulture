@@ -46,6 +46,17 @@ export interface IAction {
   payload?: Record<string, any>;
 }
 
+export enum HttpRequestMethod {
+  GET = 'GET',
+  POST = 'POST',
+}
+
+export interface IHttpRequestPayload {
+  url: string;
+  method: HttpRequestMethod;
+  body?: string;
+}
+
 export interface IAutomation {
   _id: string;
   name: string;

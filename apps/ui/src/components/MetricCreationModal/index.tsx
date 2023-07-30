@@ -3,13 +3,12 @@ import { SubmitHandler, useFieldArray, useForm } from 'react-hook-form';
 import styles from './styles.module.css';
 import { Modal } from '../Modal';
 import { Input } from '../Input';
-import { IMetric, MetricSchemaType } from '@vulture/core';
+import { MetricSchemaType } from '@vulture/core';
 import { ActionButton } from '../ActionButton';
 import { ReactComponent as TrashIcon } from '../../assets/img/icons/trash.svg';
 import { ReactComponent as PlusIcon } from '../../assets/img/icons/plus.svg';
 import { Select } from '../Select';
 import { useCreateMetricMutation } from '../../state/api/metricsAPI';
-import { useCallback } from 'react';
 
 export interface MetricCreationModalProps {
   className?: string;

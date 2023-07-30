@@ -12,6 +12,7 @@ import { ActionButton } from '../../components/ActionButton';
 import styles from './styles.module.css';
 import { AutomationList } from '../../components/AutomationList';
 import { useGetMetricDataQuery } from '../../state/api/dataAPI';
+import { AutomationCreationModal } from '../../components/AutomationCreationModal';
 
 export const MetricPage = () => {
   const navigate = useNavigate();
@@ -29,15 +30,10 @@ export const MetricPage = () => {
   const handleDelete = useCallback(async () => {
     try {
       await deleteMetric(metricId!);
-      alert('Success');
       navigate('/');
     } catch (e) {
       alert(e);
     }
-  }, []);
-
-  const handleExportToCSV = useCallback(async () => {
-    console.log('Metric data exported!');
   }, []);
 
   if (!getSingleMetricData || isGetSingleMetricLoading) {
@@ -100,6 +96,13 @@ export const MetricPage = () => {
             automations={getSingleMetricData.automations}
           />
         </section>
+      )}
+      {isCreationModalOpen && (
+        <AutomationCreationModal
+          metricId={getSingleMetricData._id}
+          metricSchema={getSingleMetricData.schema}
+          onClose={() => setCreationModalOpen(false)}
+        />
       )}
     </>
   );

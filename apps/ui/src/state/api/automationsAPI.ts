@@ -3,6 +3,17 @@ import { api } from '../api';
 
 const automationsAPI = api.injectEndpoints({
   endpoints: (builder) => ({
+    createAutomation: builder.mutation<
+      IAutomation,
+      { metricId: string; automation: Omit<IAutomation, '_id'> }
+    >({
+      query: ({ metricId, automation }) => ({
+        url: `metrics/${metricId}/automations`,
+        method: 'POST',
+        body: automation,
+      }),
+      invalidatesTags: ['Metrics'],
+    }),
     deleteAutomation: builder.mutation<
       IAutomation,
       { metricId: string; automationId: string }
@@ -16,6 +27,7 @@ const automationsAPI = api.injectEndpoints({
   }),
 });
 
-export const { useDeleteAutomationMutation } = automationsAPI;
+export const { useCreateAutomationMutation, useDeleteAutomationMutation } =
+  automationsAPI;
 
 export default automationsAPI;
